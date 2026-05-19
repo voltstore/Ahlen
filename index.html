@@ -1,0 +1,2431 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<meta name="theme-color" content="#0a0e27">
+<meta name="description" content="متجر أهلين - وجهتك الأولى لجميع خدمات الديسكورد بأفضل الأسعار | Discord Nitro, Boosts, Gift Cards">
+<meta name="keywords" content="ديسكورد, نيترو, بوست, متجر, أهلين, Discord, Nitro, Boost, Gift Card">
+<meta property="og:title" content="أهلين - متجر ديسكورد">
+<meta property="og:description" content="وجهتك الأولى لجميع خدمات الديسكورد">
+<title>أهلين | Ahleen — متجر ديسكورد</title>
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><radialGradient id='g' cx='50%25' cy='50%25'><stop offset='0%25' stop-color='%235ce1ff'/><stop offset='100%25' stop-color='%233b9eff'/></radialGradient></defs><circle cx='50' cy='50' r='46' fill='url(%23g)'/><text x='50' y='68' text-anchor='middle' font-size='52' fill='%230a0e27' font-family='serif' font-weight='bold'>أ</text></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa+Ink:wght@400;700&family=Reem+Kufi+Fun:wght@400;500;700&family=Cairo:wght@300;400;600;700;900&family=Tajawal:wght@300;400;500;700;900&family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+<style>
+:root {
+  --bg-1: #0a0e27;
+  --bg-2: #1a1f3a;
+  --bg-3: #0f1729;
+  --accent: #5ce1ff;
+  --accent-2: #3b9eff;
+  --discord: #5865F2;
+  --text-1: #FFFFFF;
+  --text-2: #A8B2D1;
+  --border: rgba(92, 225, 255, 0.2);
+  --border-strong: rgba(92, 225, 255, 0.4);
+  --glow: 0 0 20px rgba(92, 225, 255, 0.4);
+  --danger: #ef4444;
+}
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: 'Cairo', 'Tajawal', sans-serif;
+  background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0f1729 100%);
+  background-attachment: fixed;
+  color: var(--text-1);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+body.ltr { direction: ltr; font-family: 'Inter', sans-serif; }
+body.no-scroll { overflow: hidden; }
+
+.logo-font { font-family: 'Aref Ruqaa Ink', 'Reem Kufi Fun', serif; }
+
+/* === LOADING SCREEN === */
+#loadingScreen {
+  position: fixed; inset: 0; z-index: 9999;
+  background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 24px;
+  transition: opacity 0.6s ease;
+}
+#loadingScreen.hidden { opacity: 0; pointer-events: none; }
+.loader-logo {
+  font-family: 'Aref Ruqaa Ink', serif;
+  font-size: 90px;
+  background: linear-gradient(135deg, #fff, var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 60px rgba(92,225,255,0.5);
+  animation: logoPulse 1.8s ease-in-out infinite;
+  filter: drop-shadow(0 0 30px var(--accent));
+}
+@keyframes logoPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.08); opacity: 0.85; }
+}
+.loader-spinner {
+  width: 54px; height: 54px;
+  border: 3px solid rgba(92, 225, 255, 0.15);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* === PARTICLES === */
+#particles-canvas {
+  position: fixed; inset: 0; z-index: 1;
+  pointer-events: none;
+}
+
+/* === GLASS === */
+.glass {
+  background: rgba(26, 31, 58, 0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+}
+.glass-strong {
+  background: rgba(15, 23, 41, 0.92);
+  backdrop-filter: blur(30px);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+}
+
+/* === BUTTONS === */
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: var(--bg-1);
+  padding: 14px 32px;
+  border-radius: 50px;
+  font-weight: 800;
+  font-size: 15px;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 30px rgba(92, 225, 255, 0.4);
+  text-decoration: none;
+  font-family: inherit;
+}
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 50px rgba(92, 225, 255, 0.7);
+}
+.btn-secondary {
+  background: transparent;
+  color: var(--accent);
+  padding: 14px 32px;
+  border-radius: 50px;
+  border: 2px solid var(--accent);
+  font-weight: 800;
+  font-size: 15px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  font-family: inherit;
+}
+.btn-secondary:hover {
+  background: rgba(92,225,255,0.1);
+  box-shadow: 0 0 30px rgba(92,225,255,0.4);
+  transform: translateY(-3px);
+}
+
+/* === HEADER === */
+header {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 16px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(10, 14, 39, 0.7);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  transition: all 0.3s ease;
+}
+header.scrolled {
+  padding: 10px 30px;
+  background: rgba(10, 14, 39, 0.95);
+  box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+}
+.logo-main {
+  font-family: 'Aref Ruqaa Ink', 'Reem Kufi Fun', serif;
+  font-size: 44px;
+  background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 30px rgba(92,225,255,0.4);
+  filter: drop-shadow(0 0 12px rgba(92,225,255,0.5));
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  user-select: none;
+  line-height: 1;
+}
+.logo-main:hover { transform: scale(1.05); }
+
+.hamburger {
+  background: rgba(92,225,255,0.1);
+  border: 1px solid var(--border);
+  width: 48px; height: 48px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  color: var(--accent);
+  font-size: 20px;
+  transition: all 0.3s ease;
+}
+.hamburger:hover {
+  background: rgba(92,225,255,0.2);
+  box-shadow: var(--glow);
+  transform: scale(1.05);
+}
+.lang-toggle {
+  background: rgba(92,225,255,0.1);
+  border: 1px solid var(--border);
+  color: var(--accent);
+  padding: 10px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  display: flex; align-items: center; gap: 6px;
+  font-family: inherit;
+}
+.lang-toggle:hover { background: rgba(92,225,255,0.2); box-shadow: var(--glow); }
+
+/* === SIDE MENU === */
+.side-menu-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(4px);
+  z-index: 150;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.side-menu-overlay.open { opacity: 1; pointer-events: all; }
+.side-menu {
+  position: fixed; top: 0; bottom: 0;
+  width: 320px; max-width: 90vw;
+  background: rgba(10, 14, 39, 0.98);
+  backdrop-filter: blur(30px);
+  z-index: 200;
+  padding: 30px 20px;
+  overflow-y: auto;
+  transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+}
+html[dir="rtl"] .side-menu { left: 0; right: auto; transform: translateX(-100%); border-right: 1px solid var(--border); }
+html[dir="ltr"] .side-menu { right: 0; left: auto; transform: translateX(100%); border-left: 1px solid var(--border); }
+.side-menu.open { transform: translateX(0); }
+
+.menu-item {
+  display: flex; align-items: center; gap: 14px;
+  padding: 14px 18px;
+  border-radius: 12px;
+  color: var(--text-1);
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  margin-bottom: 6px;
+  text-decoration: none;
+}
+.menu-item:hover {
+  background: rgba(92,225,255,0.1);
+  color: var(--accent);
+  transform: translateX(-6px);
+}
+html[dir="ltr"] .menu-item:hover { transform: translateX(6px); }
+.menu-item i { width: 24px; text-align: center; color: var(--accent); font-size: 17px; }
+
+/* === HERO === */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  padding: 130px 20px 80px;
+  overflow: hidden;
+}
+.hero-bg-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.45;
+  z-index: 0;
+}
+.hero-bg-orb.orb-1 {
+  width: 400px; height: 400px;
+  background: var(--accent);
+  top: 8%;
+  animation: floatOrb 14s ease-in-out infinite;
+}
+html[dir="rtl"] .hero-bg-orb.orb-1 { right: -100px; }
+html[dir="ltr"] .hero-bg-orb.orb-1 { left: -100px; }
+.hero-bg-orb.orb-2 {
+  width: 500px; height: 500px;
+  background: var(--discord);
+  bottom: -120px;
+  animation: floatOrb 16s ease-in-out infinite reverse;
+}
+html[dir="rtl"] .hero-bg-orb.orb-2 { left: -150px; }
+html[dir="ltr"] .hero-bg-orb.orb-2 { right: -150px; }
+@keyframes floatOrb {
+  0%, 100% { transform: translate(0,0) scale(1); }
+  50% { transform: translate(40px,30px) scale(1.1); }
+}
+
+.hero-content { position: relative; z-index: 3; max-width: 900px; }
+.hero-tag {
+  display: inline-block;
+  background: rgba(92,225,255,0.1);
+  border: 1px solid var(--border-strong);
+  padding: 10px 22px;
+  border-radius: 50px;
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  box-shadow: 0 0 30px rgba(92,225,255,0.15);
+}
+.hero-title {
+  font-size: clamp(38px, 6.5vw, 78px);
+  font-weight: 900;
+  margin: 0 0 24px;
+  background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+}
+.hero-subtitle {
+  font-size: clamp(16px, 2vw, 22px);
+  color: var(--text-2);
+  margin: 0 auto 40px;
+  max-width: 620px;
+  line-height: 1.6;
+}
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Floating discord cards behind hero */
+.float-card {
+  position: absolute;
+  width: 100px; height: 140px;
+  background: linear-gradient(135deg, rgba(92,225,255,0.15), rgba(88,101,242,0.15));
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  color: var(--accent);
+  opacity: 0.4;
+  animation: floatCard 8s ease-in-out infinite;
+  z-index: 1;
+}
+@keyframes floatCard {
+  0%, 100% { transform: translateY(0) rotate(-5deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+.float-card.c1 { top: 18%; left: 8%; animation-delay: 0s; }
+.float-card.c2 { top: 25%; right: 10%; animation-delay: 2s; }
+.float-card.c3 { bottom: 25%; left: 12%; animation-delay: 4s; }
+.float-card.c4 { bottom: 18%; right: 14%; animation-delay: 6s; }
+
+@media (max-width: 768px) {
+  .float-card { width: 70px; height: 100px; font-size: 26px; opacity: 0.25; }
+}
+
+/* === SECTIONS === */
+section { position: relative; z-index: 2; padding: 80px 20px; }
+.container { max-width: 1280px; margin: 0 auto; }
+.section-title {
+  font-size: clamp(28px, 4vw, 50px);
+  font-weight: 900;
+  text-align: center;
+  margin: 0 0 16px;
+  background: linear-gradient(135deg, #fff, var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.2;
+}
+.section-subtitle {
+  text-align: center;
+  color: var(--text-2);
+  font-size: 17px;
+  margin: 0 auto 60px;
+  max-width: 620px;
+}
+
+/* === WHY US === */
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+}
+.why-card {
+  padding: 36px 24px;
+  text-align: center;
+  transition: all 0.4s ease;
+}
+.why-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 50px rgba(92,225,255,0.25);
+  border-color: var(--accent);
+}
+.why-icon {
+  width: 80px; height: 80px;
+  margin: 0 auto 22px;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, rgba(92,225,255,0.2), rgba(59,158,255,0.15));
+  border: 1px solid var(--border-strong);
+  border-radius: 20px;
+  font-size: 34px;
+  color: var(--accent);
+  transition: all 0.4s ease;
+}
+.why-card:hover .why-icon {
+  transform: scale(1.1) rotate(-6deg);
+  box-shadow: 0 0 30px rgba(92,225,255,0.5);
+}
+.why-card h3 { font-size: 22px; font-weight: 800; margin: 0 0 10px; }
+.why-card p { color: var(--text-2); font-size: 15px; margin: 0; line-height: 1.6; }
+
+/* === PACKAGES === */
+.pkg-section-title {
+  font-size: 28px;
+  font-weight: 800;
+  margin: 50px 0 24px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--accent);
+}
+.pkg-section-title i { font-size: 26px; }
+.pkg-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 28px;
+}
+.pkg-card {
+  padding: 36px 28px;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  overflow: hidden;
+}
+.pkg-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(92,225,255,0.08), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+.pkg-card:hover {
+  transform: translateY(-10px) perspective(1000px) rotateX(2deg);
+  border-color: var(--accent);
+  box-shadow: 0 20px 60px rgba(92,225,255,0.3);
+}
+.pkg-card:hover::before { opacity: 1; }
+.pkg-badge {
+  position: absolute;
+  top: 18px;
+  background: linear-gradient(135deg, #ff6b6b, #ffa500);
+  color: #fff;
+  padding: 6px 16px;
+  border-radius: 30px;
+  font-size: 12px;
+  font-weight: 800;
+  box-shadow: 0 4px 20px rgba(255,107,107,0.5);
+  z-index: 2;
+}
+html[dir="rtl"] .pkg-badge { left: 18px; }
+html[dir="ltr"] .pkg-badge { right: 18px; }
+.pkg-icon {
+  width: 64px; height: 64px;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  border-radius: 16px;
+  font-size: 28px;
+  color: var(--bg-1);
+  margin-bottom: 20px;
+  box-shadow: 0 8px 30px rgba(92,225,255,0.4);
+}
+.pkg-title { font-size: 26px; font-weight: 800; margin: 0 0 6px; }
+.pkg-price {
+  font-size: 42px;
+  font-weight: 900;
+  color: var(--accent);
+  margin: 18px 0;
+  text-shadow: 0 0 30px rgba(92,225,255,0.4);
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.pkg-price small {
+  font-size: 16px;
+  color: var(--text-2);
+  font-weight: 500;
+}
+.pkg-features { list-style: none; padding: 0; margin: 22px 0; }
+.pkg-features li {
+  padding: 11px 0;
+  color: var(--text-2);
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14.5px;
+  line-height: 1.5;
+  border-bottom: 1px solid rgba(92,225,255,0.08);
+}
+.pkg-features li:last-child { border-bottom: none; }
+.pkg-features li i {
+  color: var(--accent);
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+
+/* === GIFT CARDS === */
+.gift-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
+}
+.gift-card {
+  padding: 28px 18px;
+  text-align: center;
+  position: relative;
+  transition: all 0.4s ease;
+  cursor: pointer;
+  overflow: hidden;
+  text-decoration: none;
+  display: block;
+  color: inherit;
+}
+.gift-card::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(135deg, var(--accent), var(--discord), var(--accent));
+  background-size: 200% 200%;
+  border-radius: 22px;
+  z-index: -1;
+  opacity: 0.6;
+  animation: gradientShift 4s ease infinite;
+  transition: opacity 0.3s ease;
+}
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+.gift-card:hover {
+  transform: translateY(-8px) scale(1.04);
+  box-shadow: 0 15px 40px rgba(92,225,255,0.45);
+}
+.gift-card:hover::before { opacity: 1; }
+.gift-card .price-usd {
+  font-size: 34px;
+  font-weight: 900;
+  background: linear-gradient(135deg, #fff, var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 6px;
+  line-height: 1;
+}
+.gift-card .price-sar {
+  font-size: 17px;
+  color: var(--text-2);
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+.gift-card .price-sar .currency { color: var(--accent); font-size: 20px; }
+.gift-card .order-link {
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* === STEPS === */
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 28px;
+  margin-bottom: 50px;
+}
+.step-card {
+  padding: 40px 24px;
+  text-align: center;
+  position: relative;
+  transition: all 0.3s ease;
+}
+.step-card:hover { transform: translateY(-6px); border-color: var(--accent); }
+.step-num {
+  width: 64px; height: 64px;
+  margin: 0 auto 22px;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: var(--bg-1);
+  font-weight: 900;
+  font-size: 28px;
+  border-radius: 50%;
+  box-shadow: 0 0 30px rgba(92,225,255,0.5);
+}
+.step-card h3 { font-size: 22px; font-weight: 800; margin: 0 0 10px; }
+.step-card p { color: var(--text-2); margin: 0; font-size: 15px; }
+
+/* === FOOTER === */
+footer {
+  position: relative;
+  z-index: 2;
+  padding: 60px 20px 30px;
+  border-top: 1px solid var(--border);
+  background: rgba(10,14,39,0.6);
+  text-align: center;
+}
+.footer-social { margin-bottom: 24px; }
+.footer-social a {
+  display: inline-flex;
+  width: 46px; height: 46px;
+  align-items: center; justify-content: center;
+  background: rgba(92,225,255,0.1);
+  color: var(--accent);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  margin: 0 6px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  font-size: 18px;
+}
+.footer-social a:hover {
+  background: var(--accent);
+  color: var(--bg-1);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(92,225,255,0.4);
+}
+.footer-links { margin: 20px 0; }
+.footer-links a {
+  color: var(--text-2);
+  text-decoration: none;
+  margin: 0 12px;
+  font-size: 14px;
+  transition: color 0.2s ease;
+}
+.footer-links a:hover { color: var(--accent); }
+
+/* === FLOATING DISCORD BUTTON === */
+.float-discord {
+  position: fixed;
+  bottom: 28px;
+  width: 64px; height: 64px;
+  background: var(--discord);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff;
+  font-size: 28px;
+  cursor: pointer;
+  z-index: 90;
+  box-shadow: 0 4px 20px rgba(88,101,242,0.6);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: none;
+  text-decoration: none;
+  animation: floatPulse 2.8s ease-in-out infinite;
+}
+html[dir="rtl"] .float-discord { left: 28px; }
+html[dir="ltr"] .float-discord { right: 28px; }
+.float-discord:hover {
+  transform: scale(1.12);
+  box-shadow: 0 6px 35px rgba(88,101,242,0.9);
+}
+@keyframes floatPulse {
+  0%, 100% {
+    box-shadow: 0 4px 20px rgba(88,101,242,0.6), 0 0 0 0 rgba(88,101,242,0.7);
+    transform: translateY(0);
+  }
+  50% {
+    box-shadow: 0 4px 30px rgba(88,101,242,0.8), 0 0 0 20px rgba(88,101,242,0);
+    transform: translateY(-5px);
+  }
+}
+.float-discord::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--bg-2);
+  color: var(--text-1);
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+  border: 1px solid var(--border);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  font-family: 'Cairo', 'Inter', sans-serif;
+}
+html[dir="rtl"] .float-discord::before { right: 80px; }
+html[dir="ltr"] .float-discord::before { left: 80px; }
+.float-discord:hover::before { opacity: 1; }
+
+/* === MODAL === */
+.modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.modal-overlay.open { display: flex; animation: fadeIn 0.3s ease; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.modal {
+  width: 100%;
+  max-width: 460px;
+  padding: 44px 36px 36px;
+  position: relative;
+  animation: scaleIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 0 60px rgba(92,225,255,0.3);
+}
+@keyframes scaleIn {
+  from { transform: scale(0.85); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+.modal-close {
+  position: absolute;
+  top: 16px;
+  background: rgba(92,225,255,0.1);
+  border: 1px solid var(--border);
+  color: var(--text-2);
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+html[dir="rtl"] .modal-close { left: 16px; }
+html[dir="ltr"] .modal-close { right: 16px; }
+.modal-close:hover { color: var(--accent); background: rgba(92,225,255,0.2); }
+
+.form-group { margin-bottom: 20px; }
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 700;
+  color: var(--text-2);
+  font-size: 14px;
+}
+.form-input {
+  width: 100%;
+  padding: 14px 18px;
+  background: rgba(10,14,39,0.6);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: var(--text-1);
+  font-size: 15px;
+  font-family: inherit;
+  transition: all 0.3s ease;
+}
+.form-input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(92,225,255,0.15);
+}
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-2);
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+.checkbox-row input {
+  accent-color: var(--accent);
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+/* === DASHBOARD === */
+#dashboard {
+  position: fixed; inset: 0;
+  z-index: 2000;
+  background: linear-gradient(135deg, #0a0e27 0%, #0f1729 100%);
+  display: none;
+  overflow: hidden;
+}
+#dashboard.open { display: flex; }
+.dash-sidebar {
+  width: 270px;
+  background: rgba(15,23,41,0.95);
+  padding: 24px 16px;
+  height: 100vh;
+  overflow-y: auto;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+}
+html[dir="rtl"] .dash-sidebar { border-left: 1px solid var(--border); }
+html[dir="ltr"] .dash-sidebar { border-right: 1px solid var(--border); }
+.dash-content {
+  flex: 1;
+  padding: 24px 32px;
+  overflow-y: auto;
+  height: 100vh;
+}
+.dash-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.dash-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 16px;
+  border-radius: 10px;
+  color: var(--text-2);
+  cursor: pointer;
+  margin-bottom: 4px;
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.2s ease;
+  border: none;
+  background: none;
+  font-family: inherit;
+  width: 100%;
+  text-align: start;
+}
+.dash-nav-item:hover { background: rgba(92,225,255,0.08); color: var(--text-1); }
+.dash-nav-item.active {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: var(--bg-1);
+  box-shadow: 0 0 25px rgba(92,225,255,0.4);
+}
+.dash-nav-item i { width: 22px; text-align: center; }
+.dash-section { display: none; }
+.dash-section.active { display: block; animation: fadeIn 0.3s ease; }
+.dash-card { padding: 24px; margin-bottom: 24px; }
+.dash-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.dash-stat { padding: 22px; text-align: center; }
+.dash-stat .num {
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 6px;
+  text-shadow: 0 0 20px rgba(92,225,255,0.3);
+}
+.dash-stat .label { color: var(--text-2); font-size: 14px; font-weight: 600; }
+.dash-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+.dash-table th,
+.dash-table td {
+  padding: 14px;
+  text-align: start;
+  border-bottom: 1px solid var(--border);
+}
+.dash-table th { color: var(--accent); font-weight: 700; font-size: 14px; }
+.dash-table tr:hover { background: rgba(92,225,255,0.04); }
+.dash-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.dash-btn {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: inherit;
+}
+.dash-btn-edit { background: rgba(92,225,255,0.2); color: var(--accent); }
+.dash-btn-edit:hover { background: var(--accent); color: var(--bg-1); }
+.dash-btn-delete { background: rgba(239,68,68,0.2); color: var(--danger); }
+.dash-btn-delete:hover { background: var(--danger); color: #fff; }
+.dash-btn-add {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: var(--bg-1);
+  padding: 12px 22px;
+  border-radius: 10px;
+  border: none;
+  font-weight: 800;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  font-family: inherit;
+  box-shadow: 0 4px 20px rgba(92,225,255,0.3);
+}
+.dash-btn-add:hover { transform: translateY(-2px); box-shadow: 0 6px 25px rgba(92,225,255,0.5); }
+
+/* === SCROLLBAR === */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--bg-1); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--accent-2), var(--accent));
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+/* === SweetAlert overrides === */
+.swal2-popup {
+  background: var(--bg-2) !important;
+  color: var(--text-1) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 20px !important;
+  font-family: inherit !important;
+}
+.swal2-title, .swal2-html-container { color: var(--text-1) !important; }
+.swal2-confirm {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2)) !important;
+  color: var(--bg-1) !important;
+  font-weight: 800 !important;
+  border-radius: 50px !important;
+  padding: 12px 28px !important;
+  box-shadow: 0 0 20px rgba(92,225,255,0.4) !important;
+}
+.swal2-cancel {
+  background: transparent !important;
+  border: 2px solid var(--text-2) !important;
+  color: var(--text-2) !important;
+  border-radius: 50px !important;
+  padding: 12px 28px !important;
+  font-weight: 800 !important;
+}
+.swal2-input {
+  background: rgba(10,14,39,0.6) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text-1) !important;
+  border-radius: 10px !important;
+  font-family: inherit !important;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  header { padding: 12px 16px; }
+  header.scrolled { padding: 10px 16px; }
+  .logo-main { font-size: 34px; }
+  .lang-toggle { padding: 8px 12px; font-size: 13px; }
+  .hamburger { width: 42px; height: 42px; font-size: 17px; }
+  .float-discord { bottom: 20px; width: 56px; height: 56px; font-size: 24px; }
+  html[dir="rtl"] .float-discord { left: 20px; }
+  html[dir="ltr"] .float-discord { right: 20px; }
+  section { padding: 60px 16px; }
+  .pkg-card, .why-card, .gift-card, .step-card { padding: 24px 18px; }
+  .pkg-price { font-size: 32px; }
+  #dashboard.open { flex-direction: column; }
+  .dash-sidebar { width: 100%; height: auto; flex-direction: row; flex-wrap: wrap; padding: 14px; gap: 6px; }
+  .dash-nav-item { width: auto; padding: 10px 14px; font-size: 13px; margin: 0; }
+  .dash-content { padding: 20px 16px; height: auto; }
+  .modal { padding: 36px 24px 28px; }
+}
+@media (max-width: 480px) {
+  .hero-title { font-size: 36px; }
+  .hero-subtitle { font-size: 15px; }
+  .hero-buttons .btn-primary, .hero-buttons .btn-secondary { padding: 12px 22px; font-size: 14px; }
+  .gift-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .float-card { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- LOADING SCREEN -->
+<div id="loadingScreen">
+  <div class="loader-logo">أهلين</div>
+  <div class="loader-spinner"></div>
+</div>
+
+<!-- PARTICLES -->
+<canvas id="particles-canvas"></canvas>
+
+<!-- HEADER -->
+<header id="mainHeader">
+  <div class="logo-main" id="logo">أهلين</div>
+  <div style="display:flex;gap:10px;align-items:center;">
+    <button class="lang-toggle" id="langToggle" title="تبديل اللغة">
+      <i class="fas fa-globe"></i>
+      <span id="langLabel">EN</span>
+    </button>
+    <button class="hamburger" id="hamburgerBtn" aria-label="menu"><i class="fas fa-bars"></i></button>
+  </div>
+</header>
+
+<!-- SIDE MENU -->
+<div class="side-menu-overlay" id="sideMenuOverlay"></div>
+<aside class="side-menu" id="sideMenu">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:30px;padding:0 8px;">
+    <div class="logo-main" style="font-size:34px;">أهلين</div>
+    <button class="hamburger" id="closeMenuBtn" style="width:38px;height:38px;font-size:16px;" aria-label="close"><i class="fas fa-times"></i></button>
+  </div>
+  <nav>
+    <a class="menu-item" data-scroll="home"><i class="fas fa-home"></i><span data-i18n="nav_home">الرئيسية</span></a>
+    <a class="menu-item" data-scroll="packages"><i class="fas fa-box"></i><span data-i18n="nav_packages">الباقات</span></a>
+    <a class="menu-item" data-scroll="why"><i class="fas fa-star"></i><span data-i18n="nav_why">لماذا تختارنا</span></a>
+    <a class="menu-item" data-scroll="contact"><i class="fas fa-phone"></i><span data-i18n="nav_contact">تواصل معنا</span></a>
+    <a class="menu-item" id="loginMenuBtn"><i class="fas fa-lock"></i><span data-i18n="nav_login">تسجيل الدخول</span></a>
+  </nav>
+  <div style="margin-top:auto;padding:20px 8px 0;border-top:1px solid var(--border);margin-top:30px;">
+    <div style="color:var(--text-2);font-size:13px;margin-bottom:12px;text-align:center;" data-i18n="join_server">انضم لسيرفر الديسكورد</div>
+    <a href="https://discord.gg/ahlen" target="_blank" rel="noopener" class="btn-primary" id="sideMenuDiscord" style="width:100%;padding:12px;background:var(--discord);box-shadow:0 0 25px rgba(88,101,242,0.5);color:#fff;">
+      <i class="fab fa-discord"></i>
+      <span>Discord Server</span>
+    </a>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<main style="position:relative;z-index:2;">
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg-orb orb-1"></div>
+    <div class="hero-bg-orb orb-2"></div>
+    <div class="float-card c1"><i class="fab fa-discord"></i></div>
+    <div class="float-card c2"><i class="fas fa-gem"></i></div>
+    <div class="float-card c3"><i class="fas fa-rocket"></i></div>
+    <div class="float-card c4"><i class="fas fa-bolt"></i></div>
+
+    <div class="hero-content">
+      <div class="hero-tag" data-aos="fade-down">
+        <i class="fas fa-bolt"></i> <span data-i18n="hero_tag">المتجر العربي رقم #1 لخدمات الديسكورد</span>
+      </div>
+      <h1 class="hero-title" data-aos="fade-up" data-i18n="hero_title">أهلاً بك في متجر أهلين</h1>
+      <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="100" data-i18n="hero_subtitle">وجهتك الأولى لجميع خدمات الديسكورد بأفضل الأسعار</p>
+      <div class="hero-buttons" data-aos="fade-up" data-aos-delay="200">
+        <a href="#packages" class="btn-primary">
+          <i class="fas fa-box"></i>
+          <span data-i18n="hero_btn_browse">تصفّح الباقات</span>
+        </a>
+        <a href="https://discord.gg/ahlen" target="_blank" rel="noopener" class="btn-secondary" onclick="trackEvent('discord_clicks')">
+          <i class="fab fa-discord"></i>
+          <span data-i18n="hero_btn_join">انضم لسيرفرنا</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section id="why" class="container">
+    <h2 class="section-title" data-aos="fade-up" data-i18n="why_title">لماذا تختارنا؟</h2>
+    <p class="section-subtitle" data-aos="fade-up" data-i18n="why_subtitle">نقدم أفضل تجربة شراء لخدمات الديسكورد في الوطن العربي</p>
+    <div class="why-grid" id="whyGrid"></div>
+  </section>
+
+  <!-- PACKAGES -->
+  <section id="packages" class="container">
+    <h2 class="section-title" data-aos="fade-up" data-i18n="pkg_title">باقاتنا المميزة</h2>
+    <p class="section-subtitle" data-aos="fade-up" data-i18n="pkg_subtitle">اختر الباقة المناسبة لك واحصل عليها فوراً</p>
+
+    <div data-aos="fade-up">
+      <h3 class="pkg-section-title">
+        <i class="fas fa-rocket"></i>
+        <span data-i18n="pkg_nitro">Discord Nitro</span>
+      </h3>
+      <div class="pkg-grid-2" id="nitroGrid"></div>
+    </div>
+
+    <div data-aos="fade-up">
+      <h3 class="pkg-section-title">
+        <i class="fas fa-bolt"></i>
+        <span data-i18n="pkg_boosts">باقات البوستات (14 Boosts)</span>
+      </h3>
+      <div class="pkg-grid-2" id="boostGrid"></div>
+    </div>
+
+    <div data-aos="fade-up">
+      <h3 class="pkg-section-title">
+        <i class="fas fa-gift"></i>
+        <span data-i18n="pkg_gifts">قيفت كاردز / أفكتات</span>
+      </h3>
+      <div class="gift-grid" id="giftGrid"></div>
+    </div>
+  </section>
+
+  <!-- HOW TO ORDER -->
+  <section id="contact" class="container">
+    <h2 class="section-title" data-aos="fade-up" data-i18n="order_title">كل الحجوزات تتم عبر سيرفر الديسكورد</h2>
+    <p class="section-subtitle" data-aos="fade-up" data-i18n="order_subtitle">3 خطوات بسيطة للحصول على خدمتك</p>
+    <div class="steps-grid">
+      <div class="glass step-card" data-aos="fade-up">
+        <div class="step-num">1</div>
+        <h3 data-i18n="step1_title">انضم للسيرفر</h3>
+        <p data-i18n="step1_desc">اضغط على الزر أدناه للانضمام لسيرفرنا</p>
+      </div>
+      <div class="glass step-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="step-num">2</div>
+        <h3 data-i18n="step2_title">اختر الباقة</h3>
+        <p data-i18n="step2_desc">افتح تذكرة جديدة وحدد طلبك المناسب</p>
+      </div>
+      <div class="glass step-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="step-num">3</div>
+        <h3 data-i18n="step3_title">استلم خدمتك</h3>
+        <p data-i18n="step3_desc">سيتم تسليم طلبك خلال دقائق معدودة</p>
+      </div>
+    </div>
+    <div style="text-align:center;" data-aos="zoom-in">
+      <a href="https://discord.gg/ahlen" target="_blank" rel="noopener" class="btn-primary" id="ctaJoinBtn" style="font-size:17px;padding:18px 44px;" onclick="trackEvent('discord_clicks')">
+        <i class="fab fa-discord"></i>
+        <span data-i18n="cta_join">انضم لسيرفر أهلين الآن</span>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="logo-main" style="font-size:46px;margin-bottom:12px;">أهلين</div>
+    <p style="color:var(--text-2);margin:0 0 24px;font-size:15px;" data-i18n="footer_tagline">وجهتك الأولى لخدمات الديسكورد</p>
+    <div class="footer-social">
+      <a href="https://discord.gg/ahlen" target="_blank" rel="noopener" title="Discord" onclick="trackEvent('discord_clicks')"><i class="fab fa-discord"></i></a>
+      <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+      <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="#" title="TikTok"><i class="fab fa-tiktok"></i></a>
+    </div>
+    <div class="footer-links">
+      <a href="#packages" data-i18n="nav_packages">الباقات</a>
+      <a href="#why" data-i18n="nav_why">لماذا تختارنا</a>
+      <a href="#contact" data-i18n="nav_contact">تواصل معنا</a>
+    </div>
+    <p style="color:var(--text-2);font-size:13px;margin:18px 0 0;">
+      © 2026 <span class="logo-font" style="color:var(--accent);font-size:18px;">أهلين</span>
+      — <span data-i18n="footer_rights">جميع الحقوق محفوظة</span>
+    </p>
+  </div>
+</footer>
+
+<!-- FLOATING DISCORD BUTTON -->
+<a href="https://discord.gg/ahlen" target="_blank" rel="noopener" class="float-discord" id="floatDiscord" data-tooltip="انضم لسيرفر أهلين 💬" onclick="trackEvent('discord_clicks')">
+  <i class="fab fa-discord"></i>
+</a>
+
+<!-- LOGIN MODAL -->
+<div class="modal-overlay" id="loginModal">
+  <div class="modal glass-strong">
+    <button class="modal-close" id="loginCloseBtn"><i class="fas fa-times"></i></button>
+    <div style="text-align:center;margin-bottom:28px;">
+      <div style="width:72px;height:72px;margin:0 auto 16px;background:linear-gradient(135deg, var(--accent), var(--accent-2));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:32px;color:var(--bg-1);box-shadow:0 0 30px rgba(92,225,255,0.5);">
+        <i class="fas fa-user-shield"></i>
+      </div>
+      <h2 style="font-size:26px;font-weight:900;margin:0 0 6px;" data-i18n="login_title">تسجيل الدخول</h2>
+      <p style="color:var(--text-2);font-size:14px;margin:0;" data-i18n="login_subtitle">سجل دخولك للوصول إلى لوحة التحكم</p>
+    </div>
+    <form id="loginForm">
+      <div class="form-group">
+        <label data-i18n="login_user">اسم المستخدم</label>
+        <input type="text" class="form-input" id="loginUser" required autocomplete="username" placeholder="ahleen">
+      </div>
+      <div class="form-group">
+        <label data-i18n="login_pass">كلمة المرور</label>
+        <input type="password" class="form-input" id="loginPass" required autocomplete="current-password" placeholder="••••••••">
+      </div>
+      <div class="checkbox-row">
+        <input type="checkbox" id="rememberMe">
+        <label for="rememberMe" style="margin:0;cursor:pointer;" data-i18n="login_remember">تذكرني</label>
+      </div>
+      <button type="submit" class="btn-primary" style="width:100%;">
+        <i class="fas fa-sign-in-alt"></i>
+        <span data-i18n="login_btn">دخول</span>
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboard"></div>
+
+<!-- SCRIPTS -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+/* ============================================
+   TRANSLATIONS (i18n)
+============================================ */
+const translations = {
+  ar: {
+    nav_home: "الرئيسية",
+    nav_packages: "الباقات",
+    nav_why: "لماذا تختارنا",
+    nav_contact: "تواصل معنا",
+    nav_login: "تسجيل الدخول",
+    join_server: "انضم لسيرفر الديسكورد",
+    hero_tag: "المتجر العربي رقم #1 لخدمات الديسكورد",
+    hero_title: "أهلاً بك في متجر أهلين",
+    hero_subtitle: "وجهتك الأولى لجميع خدمات الديسكورد بأفضل الأسعار",
+    hero_btn_browse: "تصفّح الباقات",
+    hero_btn_join: "انضم لسيرفرنا",
+    why_title: "لماذا تختارنا؟",
+    why_subtitle: "نقدم أفضل تجربة شراء لخدمات الديسكورد في الوطن العربي",
+    pkg_title: "باقاتنا المميزة",
+    pkg_subtitle: "اختر الباقة المناسبة لك واحصل عليها فوراً",
+    pkg_nitro: "Discord Nitro",
+    pkg_boosts: "باقات البوستات (14 Boosts)",
+    pkg_gifts: "قيفت كاردز / أفكتات",
+    order_title: "كل الحجوزات تتم عبر سيرفر الديسكورد",
+    order_subtitle: "3 خطوات بسيطة للحصول على خدمتك",
+    step1_title: "انضم للسيرفر",
+    step1_desc: "اضغط على الزر أدناه للانضمام لسيرفرنا",
+    step2_title: "اختر الباقة",
+    step2_desc: "افتح تذكرة جديدة وحدد طلبك المناسب",
+    step3_title: "استلم خدمتك",
+    step3_desc: "سيتم تسليم طلبك خلال دقائق معدودة",
+    cta_join: "انضم لسيرفر أهلين الآن",
+    footer_tagline: "وجهتك الأولى لخدمات الديسكورد",
+    footer_rights: "جميع الحقوق محفوظة",
+    login_title: "تسجيل الدخول",
+    login_subtitle: "سجل دخولك للوصول إلى لوحة التحكم",
+    login_user: "اسم المستخدم",
+    login_pass: "كلمة المرور",
+    login_remember: "تذكرني",
+    login_btn: "دخول",
+    order_now: "اطلب الآن",
+    most_saving: "الأكثر توفيراً 🔥",
+    most_popular: "الأكثر مبيعاً ⭐",
+    best_value: "الأفضل قيمة 💰",
+    sar: "ريال",
+    dash_title: "لوحة التحكم",
+    dash_overview: "نظرة عامة",
+    dash_products: "إدارة المنتجات",
+    dash_gifts: "القيفت كاردز",
+    dash_content: "المحتوى",
+    dash_analytics: "الإحصائيات",
+    dash_settings: "الإعدادات",
+    dash_logout: "خروج",
+    visits: "الزيارات",
+    discord_clicks: "ضغطات الديسكورد",
+    total_products: "إجمالي المنتجات",
+    pkg_views: "مشاهدات الباقات",
+    view_site: "عرض الموقع",
+    welcome_back: "مرحباً بعودتك",
+    owner_panel: "لوحة تحكم الأونر",
+    visit_stats: "إحصائيات الزيارات الأسبوعية",
+    activity_breakdown: "تفصيل النشاط",
+    reset_analytics: "إعادة تعيين الإحصائيات",
+    reset_default: "استعادة الافتراضي",
+    save_settings: "حفظ الإعدادات",
+    discord_link_label: "رابط سيرفر الديسكورد",
+    admin_user_label: "اسم مستخدم الأونر",
+    new_pass_label: "كلمة مرور جديدة (اتركها فارغة للإبقاء)",
+    maintenance_mode: "وضع الصيانة",
+    title_label: "العنوان",
+    price_label: "السعر",
+    period_label: "الفترة",
+    actions_label: "إجراءات",
+    add_nitro: "إضافة Nitro",
+    add_boost: "إضافة بوست",
+    add_gift: "إضافة قيفت كارد",
+    why_features: "ميزات لماذا تختارنا",
+    price_usd_label: "السعر بالدولار",
+    price_sar_label: "السعر بالريال",
+  },
+  en: {
+    nav_home: "Home",
+    nav_packages: "Packages",
+    nav_why: "Why Us",
+    nav_contact: "Contact",
+    nav_login: "Login",
+    join_server: "Join Discord Server",
+    hero_tag: "The #1 Arabic Discord Services Store",
+    hero_title: "Welcome to Ahleen Store",
+    hero_subtitle: "Your premier destination for Discord services at the best prices",
+    hero_btn_browse: "Browse Packages",
+    hero_btn_join: "Join Our Server",
+    why_title: "Why Choose Us?",
+    why_subtitle: "We offer the best Discord shopping experience in the Arab world",
+    pkg_title: "Our Premium Packages",
+    pkg_subtitle: "Choose the right package and get it instantly",
+    pkg_nitro: "Discord Nitro",
+    pkg_boosts: "Boost Packages (14 Boosts)",
+    pkg_gifts: "Gift Cards / Effects",
+    order_title: "All Orders via Discord Server",
+    order_subtitle: "3 simple steps to get your service",
+    step1_title: "Join the Server",
+    step1_desc: "Click the button below to join our server",
+    step2_title: "Pick a Package",
+    step2_desc: "Open a new ticket and specify your order",
+    step3_title: "Receive Your Service",
+    step3_desc: "Your order will be delivered within minutes",
+    cta_join: "Join Ahleen Server Now",
+    footer_tagline: "Your premier destination for Discord services",
+    footer_rights: "All rights reserved",
+    login_title: "Login",
+    login_subtitle: "Sign in to access the dashboard",
+    login_user: "Username",
+    login_pass: "Password",
+    login_remember: "Remember me",
+    login_btn: "Sign In",
+    order_now: "Order Now",
+    most_saving: "Best Saving 🔥",
+    most_popular: "Best Seller ⭐",
+    best_value: "Best Value 💰",
+    sar: "SAR",
+    dash_title: "Dashboard",
+    dash_overview: "Overview",
+    dash_products: "Products",
+    dash_gifts: "Gift Cards",
+    dash_content: "Content",
+    dash_analytics: "Analytics",
+    dash_settings: "Settings",
+    dash_logout: "Logout",
+    visits: "Visits",
+    discord_clicks: "Discord Clicks",
+    total_products: "Total Products",
+    pkg_views: "Package Views",
+    view_site: "View Site",
+    welcome_back: "Welcome back",
+    owner_panel: "Owner Dashboard",
+    visit_stats: "Weekly Visit Statistics",
+    activity_breakdown: "Activity Breakdown",
+    reset_analytics: "Reset Analytics",
+    reset_default: "Reset to Default",
+    save_settings: "Save Settings",
+    discord_link_label: "Discord Server Link",
+    admin_user_label: "Owner Username",
+    new_pass_label: "New Password (leave empty to keep)",
+    maintenance_mode: "Maintenance Mode",
+    title_label: "Title",
+    price_label: "Price",
+    period_label: "Period",
+    actions_label: "Actions",
+    add_nitro: "Add Nitro",
+    add_boost: "Add Boost",
+    add_gift: "Add Gift Card",
+    why_features: "Why Us Features",
+    price_usd_label: "Price USD",
+    price_sar_label: "Price SAR",
+  }
+};
+
+/* ============================================
+   DEFAULT DATA (Firebase-style structure)
+============================================ */
+const DEFAULT_DATA = {
+  whyUs: [
+    { icon: "fa-bolt", title_ar: "تسليم فوري", title_en: "Instant Delivery", desc_ar: "نسلّم طلبك خلال دقائق معدودة", desc_en: "We deliver your order within minutes" },
+    { icon: "fa-shield-halved", title_ar: "ضمان كامل", title_en: "Full Guarantee", desc_ar: "منتجات أصلية 100% مع ضمان الاسترجاع", desc_en: "100% original products with money-back guarantee" },
+    { icon: "fa-gem", title_ar: "أسعار منافسة", title_en: "Competitive Prices", desc_ar: "الأرخص في السوق العربي", desc_en: "Cheapest in the Arab market" },
+    { icon: "fa-trophy", title_ar: "دعم 24/7", title_en: "24/7 Support", desc_ar: "فريقنا متاح دائماً عبر الديسكورد", desc_en: "Our team is always available via Discord" }
+  ],
+  nitro: [
+    {
+      id: "nitro_monthly",
+      title_ar: "Nitro شهري", title_en: "Nitro Monthly",
+      price: 18.99, currency: "ريال",
+      period_ar: "/ شهر", period_en: "/ month",
+      icon: "fa-star",
+      badge: "",
+      features_ar: [
+        "رفع حجم الرفع (Upload) حتى 500MB",
+        "ستريم بجودة عالية 1080p 60fps",
+        "تعديل شامل للبروفايل + بنر متحرك + أفاتار GIF",
+        "2 Boost مجاني لأي سيرفر",
+        "إيموجيات وستيكرز مخصصة في كل السيرفرات"
+      ],
+      features_en: [
+        "Upload size up to 500MB",
+        "High-quality streaming 1080p 60fps",
+        "Full profile customization + animated banner + GIF avatar",
+        "2 free Boosts for any server",
+        "Custom emojis and stickers across all servers"
+      ]
+    },
+    {
+      id: "nitro_yearly",
+      title_ar: "Nitro سنوي", title_en: "Nitro Yearly",
+      price: 159.99, currency: "ريال",
+      period_ar: "/ سنة", period_en: "/ year",
+      icon: "fa-crown",
+      badge: "most_saving",
+      features_ar: [
+        "نفس مميزات Nitro لمدة 12 شهر كاملة",
+        "وفّر أكثر من 25% مقارنة بالاشتراك الشهري",
+        "رفع حتى 500MB + ستريم 1080p 60fps",
+        "بروفايل احترافي مع بنر متحرك",
+        "2 Boost مجاني + إيموجيات وستيكرز مخصصة"
+      ],
+      features_en: [
+        "All Nitro features for a full 12 months",
+        "Save more than 25% vs monthly subscription",
+        "500MB uploads + 1080p 60fps streaming",
+        "Pro profile with animated banner",
+        "2 free Boosts + custom emojis and stickers"
+      ]
+    }
+  ],
+  boosts: [
+    {
+      id: "boost_1m",
+      title_ar: "14 بوست — شهر واحد", title_en: "14 Boosts — 1 Month",
+      price: 18.99, currency: "ريال",
+      period_ar: "/ شهر", period_en: "/ month",
+      icon: "fa-bolt",
+      badge: "most_popular",
+      features_ar: [
+        "السيرفر يصل لـ Level 3 (Max)",
+        "ستريم بجودة عالية لجميع الأعضاء",
+        "رفع صور وبنر متحركين للسيرفر",
+        "رفع عدد الإيموجيات والستيكرز للحد الأقصى",
+        "جودة صوت 384kbps"
+      ],
+      features_en: [
+        "Server reaches Level 3 (Max)",
+        "High-quality streaming for all members",
+        "Animated server icon and banner",
+        "Maximum emoji and sticker slots",
+        "384kbps voice quality"
+      ]
+    },
+    {
+      id: "boost_3m",
+      title_ar: "14 بوست — 3 شهور", title_en: "14 Boosts — 3 Months",
+      price: 36.99, currency: "ريال",
+      period_ar: "/ 3 شهور", period_en: "/ 3 months",
+      icon: "fa-rocket",
+      badge: "best_value",
+      features_ar: [
+        "نفس مميزات البوست لمدة 3 شهور كاملة",
+        "السيرفر على Level 3 طوال الفترة",
+        "ستريم عالي الجودة + جودة صوت 384kbps",
+        "بنر وأيقونة متحركة للسيرفر",
+        "وفّر أكثر من 35% مقارنة بالشهري"
+      ],
+      features_en: [
+        "Same boost features for 3 full months",
+        "Server at Level 3 throughout",
+        "HQ streaming + 384kbps voice",
+        "Animated server banner and icon",
+        "Save 35%+ vs monthly"
+      ]
+    }
+  ],
+  giftcards: [
+    { id: "g1", price_usd: 4.99, price_sar: 8 },
+    { id: "g2", price_usd: 5.99, price_sar: 9 },
+    { id: "g3", price_usd: 6.99, price_sar: 13 },
+    { id: "g4", price_usd: 7.99, price_sar: 15 },
+    { id: "g5", price_usd: 8.49, price_sar: 17 },
+    { id: "g6", price_usd: 9.99, price_sar: 19 },
+    { id: "g7", price_usd: 11.99, price_sar: 21 },
+    { id: "g8", price_usd: 14.99, price_sar: 26 }
+  ],
+  settings: {
+    discord_link: "https://discord.gg/ahlen",
+    maintenance: false
+  },
+  admin: {
+    username: "ahleen",
+    password: "ahleen123"
+  },
+  analytics: {
+    visits: 0,
+    discord_clicks: 0,
+    package_views: 0,
+    weekly: [0, 0, 0, 0, 0, 0, 0]
+  }
+};
+
+/* ============================================
+   DATABASE (localStorage, Firebase-style)
+============================================ */
+const DB_KEY = "ahleen_store_db_v1";
+
+function deepMerge(base, override) {
+  if (Array.isArray(override)) return override;
+  if (typeof override !== "object" || override === null) return override;
+  const out = { ...base };
+  for (const k in override) {
+    out[k] = k in base ? deepMerge(base[k], override[k]) : override[k];
+  }
+  return out;
+}
+
+function loadDB() {
+  try {
+    const stored = localStorage.getItem(DB_KEY);
+    if (stored) return deepMerge(DEFAULT_DATA, JSON.parse(stored));
+  } catch (e) { console.warn("DB load failed", e); }
+  return JSON.parse(JSON.stringify(DEFAULT_DATA));
+}
+
+function saveDB() {
+  try { localStorage.setItem(DB_KEY, JSON.stringify(db)); }
+  catch (e) { console.warn("DB save failed", e); }
+}
+
+let db = loadDB();
+
+/* ============================================
+   I18N
+============================================ */
+let currentLang = localStorage.getItem("ahleen_lang") || "ar";
+
+function t(key) {
+  return (translations[currentLang] && translations[currentLang][key]) || key;
+}
+
+function applyLang() {
+  const html = document.documentElement;
+  if (currentLang === "ar") {
+    html.lang = "ar"; html.dir = "rtl";
+    document.body.classList.remove("ltr");
+  } else {
+    html.lang = "en"; html.dir = "ltr";
+    document.body.classList.add("ltr");
+  }
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const key = el.getAttribute("data-i18n");
+    el.textContent = t(key);
+  });
+  const lbl = document.getElementById("langLabel");
+  if (lbl) lbl.textContent = currentLang === "ar" ? "EN" : "AR";
+  const fd = document.getElementById("floatDiscord");
+  if (fd) fd.setAttribute("data-tooltip", currentLang === "ar" ? "انضم لسيرفر أهلين 💬" : "Join Ahleen Server 💬");
+  renderAll();
+}
+
+function toggleLang() {
+  currentLang = currentLang === "ar" ? "en" : "ar";
+  localStorage.setItem("ahleen_lang", currentLang);
+  applyLang();
+  if (document.getElementById("dashboard").classList.contains("open")) {
+    buildDashboard();
+  }
+}
+
+/* ============================================
+   RENDER
+============================================ */
+function getBadge(badgeKey) {
+  if (!badgeKey) return "";
+  return `<div class="pkg-badge">${t(badgeKey)}</div>`;
+}
+
+function renderWhyUs() {
+  const grid = document.getElementById("whyGrid");
+  if (!grid) return;
+  grid.innerHTML = db.whyUs.map((w, i) => `
+    <div class="glass why-card" data-aos="fade-up" data-aos-delay="${i * 80}">
+      <div class="why-icon"><i class="fas ${w.icon}"></i></div>
+      <h3>${currentLang === "ar" ? w.title_ar : w.title_en}</h3>
+      <p>${currentLang === "ar" ? w.desc_ar : w.desc_en}</p>
+    </div>
+  `).join("");
+}
+
+function renderPackageCard(p, animDelay = 0) {
+  const title = currentLang === "ar" ? p.title_ar : p.title_en;
+  const period = currentLang === "ar" ? p.period_ar : p.period_en;
+  const features = (currentLang === "ar" ? p.features_ar : p.features_en) || [];
+  const currency = currentLang === "ar" ? "ريال" : "SAR";
+  return `
+    <div class="glass pkg-card" data-aos="fade-up" data-aos-delay="${animDelay}">
+      ${getBadge(p.badge)}
+      <div class="pkg-icon"><i class="fas ${p.icon}"></i></div>
+      <div class="pkg-title">${title}</div>
+      <div class="pkg-price">${p.price} <small>${currency} ${period}</small></div>
+      <ul class="pkg-features">
+        ${features.map(f => `<li><i class="fas fa-check-circle"></i><span>${f}</span></li>`).join("")}
+      </ul>
+      <a href="${db.settings.discord_link}" target="_blank" rel="noopener" class="btn-primary" style="width:100%;" onclick="trackEvent('discord_clicks');trackEvent('package_views')">
+        <i class="fab fa-discord"></i>
+        <span>${t("order_now")}</span>
+      </a>
+    </div>
+  `;
+}
+
+function renderNitro() {
+  const grid = document.getElementById("nitroGrid");
+  if (!grid) return;
+  grid.innerHTML = db.nitro.map((p, i) => renderPackageCard(p, i * 100)).join("");
+}
+
+function renderBoosts() {
+  const grid = document.getElementById("boostGrid");
+  if (!grid) return;
+  grid.innerHTML = db.boosts.map((p, i) => renderPackageCard(p, i * 100)).join("");
+}
+
+function renderGifts() {
+  const grid = document.getElementById("giftGrid");
+  if (!grid) return;
+  const arrow = currentLang === "ar" ? "fa-arrow-left" : "fa-arrow-right";
+  grid.innerHTML = db.giftcards.map((g, i) => `
+    <a href="${db.settings.discord_link}" target="_blank" rel="noopener" class="glass gift-card" data-aos="zoom-in" data-aos-delay="${i * 50}" onclick="trackEvent('discord_clicks');trackEvent('package_views')">
+      <div class="price-usd">$${g.price_usd}</div>
+      <div class="price-sar">${g.price_sar} <span class="currency">﷼</span></div>
+      <div class="order-link">
+        <i class="fas ${arrow}"></i> ${t("order_now")}
+      </div>
+    </a>
+  `).join("");
+}
+
+function renderAll() {
+  renderWhyUs();
+  renderNitro();
+  renderBoosts();
+  renderGifts();
+  if (typeof AOS !== "undefined") AOS.refresh();
+}
+
+/* ============================================
+   ANALYTICS
+============================================ */
+function trackEvent(key) {
+  if (!db.analytics) db.analytics = { visits: 0, discord_clicks: 0, package_views: 0, weekly: [0,0,0,0,0,0,0] };
+  db.analytics[key] = (db.analytics[key] || 0) + 1;
+  if (key === "visits") {
+    const dayIdx = new Date().getDay();
+    if (!Array.isArray(db.analytics.weekly)) db.analytics.weekly = [0,0,0,0,0,0,0];
+    db.analytics.weekly[dayIdx] = (db.analytics.weekly[dayIdx] || 0) + 1;
+  }
+  saveDB();
+}
+
+/* ============================================
+   NAVIGATION & UI
+============================================ */
+const sideMenu = document.getElementById("sideMenu");
+const sideMenuOverlay = document.getElementById("sideMenuOverlay");
+
+function openMenu() { sideMenu.classList.add("open"); sideMenuOverlay.classList.add("open"); }
+function closeMenu() { sideMenu.classList.remove("open"); sideMenuOverlay.classList.remove("open"); }
+
+document.getElementById("hamburgerBtn").addEventListener("click", openMenu);
+document.getElementById("closeMenuBtn").addEventListener("click", closeMenu);
+sideMenuOverlay.addEventListener("click", closeMenu);
+
+document.querySelectorAll("[data-scroll]").forEach(el => {
+  el.addEventListener("click", () => {
+    const target = document.getElementById(el.getAttribute("data-scroll"));
+    if (target) target.scrollIntoView({ behavior: "smooth" });
+    closeMenu();
+  });
+});
+
+window.addEventListener("scroll", () => {
+  const h = document.getElementById("mainHeader");
+  if (window.scrollY > 30) h.classList.add("scrolled");
+  else h.classList.remove("scrolled");
+});
+
+document.getElementById("langToggle").addEventListener("click", toggleLang);
+
+/* ============================================
+   LOGIN
+============================================ */
+const loginModal = document.getElementById("loginModal");
+
+document.getElementById("loginMenuBtn").addEventListener("click", () => {
+  closeMenu();
+  loginModal.classList.add("open");
+});
+document.getElementById("loginCloseBtn").addEventListener("click", () => loginModal.classList.remove("open"));
+loginModal.addEventListener("click", (e) => {
+  if (e.target === loginModal) loginModal.classList.remove("open");
+});
+
+document.getElementById("loginForm").addEventListener("submit", (e) => {
+  e.preventDefault();
+  const user = document.getElementById("loginUser").value.trim();
+  const pass = document.getElementById("loginPass").value;
+  const remember = document.getElementById("rememberMe").checked;
+
+  if (user === db.admin.username && pass === db.admin.password) {
+    sessionStorage.setItem("ahleen_session", "1");
+    if (remember) localStorage.setItem("ahleen_session", "1");
+    Swal.fire({
+      icon: "success",
+      title: currentLang === "ar" ? "تم تسجيل الدخول!" : "Login successful!",
+      text: currentLang === "ar" ? "أهلاً بك في لوحة التحكم" : "Welcome to the dashboard",
+      timer: 1400,
+      showConfirmButton: false
+    }).then(() => {
+      loginModal.classList.remove("open");
+      document.getElementById("loginForm").reset();
+      openDashboard();
+    });
+  } else {
+    Swal.fire({
+      icon: "error",
+      title: currentLang === "ar" ? "خطأ في البيانات" : "Wrong credentials",
+      text: currentLang === "ar" ? "اسم المستخدم أو كلمة المرور غير صحيحة" : "Invalid username or password"
+    });
+  }
+});
+
+/* ============================================
+   DASHBOARD
+============================================ */
+function buildDashboard() {
+  const dash = document.getElementById("dashboard");
+  const lang = currentLang;
+  dash.innerHTML = `
+    <aside class="dash-sidebar">
+      <div style="text-align:center;margin-bottom:24px;padding-bottom:20px;border-bottom:1px solid var(--border);">
+        <div class="logo-main" style="font-size:36px;line-height:1;">أهلين</div>
+        <div style="color:var(--text-2);font-size:12px;margin-top:6px;">${t("owner_panel")}</div>
+      </div>
+      <nav style="flex:1;">
+        <button class="dash-nav-item active" data-tab="overview"><i class="fas fa-chart-line"></i>${t("dash_overview")}</button>
+        <button class="dash-nav-item" data-tab="products"><i class="fas fa-box"></i>${t("dash_products")}</button>
+        <button class="dash-nav-item" data-tab="gifts"><i class="fas fa-gift"></i>${t("dash_gifts")}</button>
+        <button class="dash-nav-item" data-tab="content"><i class="fas fa-pen"></i>${t("dash_content")}</button>
+        <button class="dash-nav-item" data-tab="analytics"><i class="fas fa-chart-pie"></i>${t("dash_analytics")}</button>
+        <button class="dash-nav-item" data-tab="settings"><i class="fas fa-cog"></i>${t("dash_settings")}</button>
+      </nav>
+      <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--border);">
+        <button class="dash-nav-item" id="dashLogout" style="background:rgba(239,68,68,0.1);color:var(--danger);">
+          <i class="fas fa-sign-out-alt"></i>${t("dash_logout")}
+        </button>
+      </div>
+    </aside>
+
+    <div class="dash-content">
+      <div class="dash-topbar">
+        <div>
+          <h1 style="font-size:26px;font-weight:900;margin:0;">${t("dash_title")}</h1>
+          <p style="color:var(--text-2);font-size:14px;margin:4px 0 0;">
+            ${t("welcome_back")}، <span style="color:var(--accent);font-weight:700;">${db.admin.username}</span> 👋
+          </p>
+        </div>
+        <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+          <button class="lang-toggle" id="dashLangToggle">
+            <i class="fas fa-globe"></i><span>${currentLang === "ar" ? "EN" : "AR"}</span>
+          </button>
+          <button class="dash-btn dash-btn-edit" id="dashHomeBtn" style="padding:10px 18px;">
+            <i class="fas fa-home"></i> ${t("view_site")}
+          </button>
+        </div>
+      </div>
+
+      <!-- OVERVIEW -->
+      <div class="dash-section active" data-section="overview">
+        <div class="dash-stats">
+          <div class="glass dash-stat"><span class="num">${db.analytics.visits || 0}</span><span class="label">${t("visits")}</span></div>
+          <div class="glass dash-stat"><span class="num">${db.analytics.discord_clicks || 0}</span><span class="label">${t("discord_clicks")}</span></div>
+          <div class="glass dash-stat"><span class="num">${db.nitro.length + db.boosts.length + db.giftcards.length}</span><span class="label">${t("total_products")}</span></div>
+          <div class="glass dash-stat"><span class="num">${db.analytics.package_views || 0}</span><span class="label">${t("pkg_views")}</span></div>
+        </div>
+        <div class="glass dash-card">
+          <h3 style="margin:0 0 16px;font-size:18px;font-weight:800;">${t("visit_stats")}</h3>
+          <canvas id="dashChart" style="max-height:320px;"></canvas>
+        </div>
+      </div>
+
+      <!-- PRODUCTS -->
+      <div class="dash-section" data-section="products">
+        <h2 style="font-size:22px;margin:0 0 16px;font-weight:800;"><i class="fas fa-rocket" style="color:var(--accent);"></i> Discord Nitro</h2>
+        <button class="dash-btn-add" onclick="addProduct('nitro')"><i class="fas fa-plus"></i> ${t("add_nitro")}</button>
+        <div class="glass dash-card" style="padding:16px;">
+          <table class="dash-table">
+            <thead><tr>
+              <th>${t("title_label")}</th>
+              <th>${t("price_label")}</th>
+              <th>${t("period_label")}</th>
+              <th>${t("actions_label")}</th>
+            </tr></thead>
+            <tbody id="nitroTable"></tbody>
+          </table>
+        </div>
+
+        <h2 style="font-size:22px;margin:30px 0 16px;font-weight:800;"><i class="fas fa-bolt" style="color:var(--accent);"></i> Boosts</h2>
+        <button class="dash-btn-add" onclick="addProduct('boosts')"><i class="fas fa-plus"></i> ${t("add_boost")}</button>
+        <div class="glass dash-card" style="padding:16px;">
+          <table class="dash-table">
+            <thead><tr>
+              <th>${t("title_label")}</th>
+              <th>${t("price_label")}</th>
+              <th>${t("period_label")}</th>
+              <th>${t("actions_label")}</th>
+            </tr></thead>
+            <tbody id="boostTable"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- GIFTS -->
+      <div class="dash-section" data-section="gifts">
+        <h2 style="font-size:22px;margin:0 0 16px;font-weight:800;"><i class="fas fa-gift" style="color:var(--accent);"></i> ${t("dash_gifts")}</h2>
+        <button class="dash-btn-add" onclick="addGift()"><i class="fas fa-plus"></i> ${t("add_gift")}</button>
+        <div class="glass dash-card" style="padding:16px;">
+          <table class="dash-table">
+            <thead><tr>
+              <th>${t("price_usd_label")}</th>
+              <th>${t("price_sar_label")}</th>
+              <th>${t("actions_label")}</th>
+            </tr></thead>
+            <tbody id="giftTable"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- CONTENT -->
+      <div class="dash-section" data-section="content">
+        <h2 style="font-size:22px;margin:0 0 16px;font-weight:800;"><i class="fas fa-pen" style="color:var(--accent);"></i> ${t("dash_content")}</h2>
+        <div class="glass dash-card">
+          <h3 style="font-size:18px;margin:0 0 16px;font-weight:800;">${t("why_features")}</h3>
+          <div id="whyEditor"></div>
+        </div>
+      </div>
+
+      <!-- ANALYTICS -->
+      <div class="dash-section" data-section="analytics">
+        <h2 style="font-size:22px;margin:0 0 16px;font-weight:800;"><i class="fas fa-chart-pie" style="color:var(--accent);"></i> ${t("dash_analytics")}</h2>
+        <div class="dash-stats">
+          <div class="glass dash-stat"><span class="num">${db.analytics.visits || 0}</span><span class="label">${t("visits")}</span></div>
+          <div class="glass dash-stat"><span class="num">${db.analytics.discord_clicks || 0}</span><span class="label">${t("discord_clicks")}</span></div>
+          <div class="glass dash-stat"><span class="num">${db.analytics.package_views || 0}</span><span class="label">${t("pkg_views")}</span></div>
+        </div>
+        <div class="glass dash-card">
+          <h3 style="margin:0 0 16px;font-size:18px;font-weight:800;">${t("activity_breakdown")}</h3>
+          <canvas id="analyticsChart" style="max-height:340px;"></canvas>
+        </div>
+        <div class="glass dash-card">
+          <button class="dash-btn dash-btn-delete" onclick="resetAnalytics()" style="padding:12px 22px;">
+            <i class="fas fa-trash"></i> ${t("reset_analytics")}
+          </button>
+        </div>
+      </div>
+
+      <!-- SETTINGS -->
+      <div class="dash-section" data-section="settings">
+        <h2 style="font-size:22px;margin:0 0 16px;font-weight:800;"><i class="fas fa-cog" style="color:var(--accent);"></i> ${t("dash_settings")}</h2>
+        <div class="glass dash-card">
+          <div class="form-group">
+            <label>${t("discord_link_label")}</label>
+            <input class="form-input" id="setDiscordLink" value="${db.settings.discord_link}">
+          </div>
+          <div class="form-group">
+            <label>${t("admin_user_label")}</label>
+            <input class="form-input" id="setAdminUser" value="${db.admin.username}">
+          </div>
+          <div class="form-group">
+            <label>${t("new_pass_label")}</label>
+            <input class="form-input" id="setAdminPass" type="password" placeholder="••••••••">
+          </div>
+          <div class="checkbox-row">
+            <input type="checkbox" id="setMaintenance" ${db.settings.maintenance ? "checked" : ""}>
+            <label for="setMaintenance" style="margin:0;cursor:pointer;">${t("maintenance_mode")}</label>
+          </div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <button class="btn-primary" id="saveSettingsBtn">
+              <i class="fas fa-save"></i> ${t("save_settings")}
+            </button>
+            <button class="dash-btn dash-btn-delete" style="padding:14px 28px;" onclick="resetAllData()">
+              <i class="fas fa-undo"></i> ${t("reset_default")}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  document.querySelectorAll(".dash-nav-item[data-tab]").forEach(item => {
+    item.addEventListener("click", () => {
+      document.querySelectorAll(".dash-nav-item[data-tab]").forEach(i => i.classList.remove("active"));
+      item.classList.add("active");
+      const tab = item.getAttribute("data-tab");
+      document.querySelectorAll(".dash-section").forEach(s => s.classList.remove("active"));
+      const section = document.querySelector(`[data-section="${tab}"]`);
+      if (section) section.classList.add("active");
+      if (tab === "analytics") renderAnalyticsChart();
+      if (tab === "overview") renderDashChart();
+    });
+  });
+
+  document.getElementById("dashLogout").addEventListener("click", logout);
+  document.getElementById("dashHomeBtn").addEventListener("click", closeDashboard);
+  document.getElementById("dashLangToggle").addEventListener("click", toggleLang);
+  document.getElementById("saveSettingsBtn").addEventListener("click", saveSettings);
+
+  renderProductTables();
+  renderGiftTable();
+  renderWhyEditor();
+  setTimeout(() => renderDashChart(), 100);
+}
+
+function renderProductTables() {
+  const nitroT = document.getElementById("nitroTable");
+  const boostT = document.getElementById("boostTable");
+  if (nitroT) nitroT.innerHTML = db.nitro.map((p, idx) => `
+    <tr>
+      <td>${currentLang === "ar" ? p.title_ar : p.title_en}</td>
+      <td><span style="color:var(--accent);font-weight:800;">${p.price} ${currentLang === "ar" ? "ريال" : "SAR"}</span></td>
+      <td>${currentLang === "ar" ? p.period_ar : p.period_en}</td>
+      <td><div class="dash-actions">
+        <button class="dash-btn dash-btn-edit" onclick="editProduct('nitro', ${idx})"><i class="fas fa-edit"></i></button>
+        <button class="dash-btn dash-btn-delete" onclick="deleteProduct('nitro', ${idx})"><i class="fas fa-trash"></i></button>
+      </div></td>
+    </tr>
+  `).join("");
+  if (boostT) boostT.innerHTML = db.boosts.map((p, idx) => `
+    <tr>
+      <td>${currentLang === "ar" ? p.title_ar : p.title_en}</td>
+      <td><span style="color:var(--accent);font-weight:800;">${p.price} ${currentLang === "ar" ? "ريال" : "SAR"}</span></td>
+      <td>${currentLang === "ar" ? p.period_ar : p.period_en}</td>
+      <td><div class="dash-actions">
+        <button class="dash-btn dash-btn-edit" onclick="editProduct('boosts', ${idx})"><i class="fas fa-edit"></i></button>
+        <button class="dash-btn dash-btn-delete" onclick="deleteProduct('boosts', ${idx})"><i class="fas fa-trash"></i></button>
+      </div></td>
+    </tr>
+  `).join("");
+}
+
+function renderGiftTable() {
+  const tbl = document.getElementById("giftTable");
+  if (!tbl) return;
+  tbl.innerHTML = db.giftcards.map((g, idx) => `
+    <tr>
+      <td><span style="color:var(--accent);font-weight:800;">$${g.price_usd}</span></td>
+      <td>${g.price_sar} <span style="color:var(--accent);">﷼</span></td>
+      <td><div class="dash-actions">
+        <button class="dash-btn dash-btn-edit" onclick="editGift(${idx})"><i class="fas fa-edit"></i></button>
+        <button class="dash-btn dash-btn-delete" onclick="deleteGift(${idx})"><i class="fas fa-trash"></i></button>
+      </div></td>
+    </tr>
+  `).join("");
+}
+
+function renderWhyEditor() {
+  const c = document.getElementById("whyEditor");
+  if (!c) return;
+  c.innerHTML = db.whyUs.map((w, idx) => `
+    <div style="padding:14px;border:1px solid var(--border);border-radius:12px;margin-bottom:10px;display:flex;gap:14px;align-items:center;background:rgba(10,14,39,0.4);">
+      <div style="width:48px;height:48px;background:rgba(92,225,255,0.15);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:20px;flex-shrink:0;">
+        <i class="fas ${w.icon}"></i>
+      </div>
+      <div style="flex:1;min-width:0;">
+        <strong style="display:block;">${currentLang === "ar" ? w.title_ar : w.title_en}</strong>
+        <div style="color:var(--text-2);font-size:13px;">${currentLang === "ar" ? w.desc_ar : w.desc_en}</div>
+      </div>
+      <button class="dash-btn dash-btn-edit" onclick="editWhy(${idx})"><i class="fas fa-edit"></i></button>
+    </div>
+  `).join("");
+}
+
+async function editProduct(type, idx) {
+  const p = db[type][idx];
+  const result = await Swal.fire({
+    title: currentLang === "ar" ? "تعديل المنتج" : "Edit Product",
+    html: `
+      <input id="ep_title_ar" class="swal2-input" placeholder="العنوان (عربي)" value="${(p.title_ar || '').replace(/"/g, '&quot;')}">
+      <input id="ep_title_en" class="swal2-input" placeholder="Title (English)" value="${(p.title_en || '').replace(/"/g, '&quot;')}">
+      <input id="ep_price" type="number" step="0.01" class="swal2-input" placeholder="السعر" value="${p.price}">
+      <input id="ep_period_ar" class="swal2-input" placeholder="الفترة (عربي)" value="${(p.period_ar || '').replace(/"/g, '&quot;')}">
+      <input id="ep_period_en" class="swal2-input" placeholder="Period (English)" value="${(p.period_en || '').replace(/"/g, '&quot;')}">
+      <input id="ep_icon" class="swal2-input" placeholder="أيقونة (fa-star)" value="${p.icon}">
+      <textarea id="ep_features_ar" class="swal2-textarea" placeholder="المميزات (عربي - سطر لكل ميزة)">${(p.features_ar || []).join('\n')}</textarea>
+      <textarea id="ep_features_en" class="swal2-textarea" placeholder="Features (English - one per line)">${(p.features_en || []).join('\n')}</textarea>
+    `,
+    showCancelButton: true,
+    confirmButtonText: currentLang === "ar" ? "حفظ" : "Save",
+    cancelButtonText: currentLang === "ar" ? "إلغاء" : "Cancel",
+    width: 600,
+    preConfirm: () => ({
+      title_ar: document.getElementById("ep_title_ar").value,
+      title_en: document.getElementById("ep_title_en").value,
+      price: parseFloat(document.getElementById("ep_price").value) || 0,
+      period_ar: document.getElementById("ep_period_ar").value,
+      period_en: document.getElementById("ep_period_en").value,
+      icon: document.getElementById("ep_icon").value,
+      features_ar: document.getElementById("ep_features_ar").value.split('\n').filter(s => s.trim()),
+      features_en: document.getElementById("ep_features_en").value.split('\n').filter(s => s.trim())
+    })
+  });
+  if (result.isConfirmed && result.value) {
+    Object.assign(db[type][idx], result.value);
+    saveDB();
+    renderProductTables();
+    renderAll();
+    Swal.fire({ icon: "success", title: currentLang === "ar" ? "تم الحفظ ✓" : "Saved ✓", timer: 1200, showConfirmButton: false });
+  }
+}
+
+async function addProduct(type) {
+  const result = await Swal.fire({
+    title: currentLang === "ar" ? "إضافة منتج جديد" : "Add New Product",
+    html: `
+      <input id="ap_title_ar" class="swal2-input" placeholder="العنوان (عربي)">
+      <input id="ap_title_en" class="swal2-input" placeholder="Title (English)">
+      <input id="ap_price" type="number" step="0.01" class="swal2-input" placeholder="السعر بالريال">
+      <input id="ap_period_ar" class="swal2-input" placeholder="الفترة (عربي)" value="/ شهر">
+      <input id="ap_period_en" class="swal2-input" placeholder="Period (English)" value="/ month">
+      <input id="ap_icon" class="swal2-input" placeholder="أيقونة" value="fa-star">
+      <textarea id="ap_features_ar" class="swal2-textarea" placeholder="المميزات (سطر لكل ميزة)"></textarea>
+      <textarea id="ap_features_en" class="swal2-textarea" placeholder="Features (one per line)"></textarea>
+    `,
+    showCancelButton: true,
+    confirmButtonText: currentLang === "ar" ? "إضافة" : "Add",
+    cancelButtonText: currentLang === "ar" ? "إلغاء" : "Cancel",
+    width: 600,
+    preConfirm: () => {
+      const title_ar = document.getElementById("ap_title_ar").value.trim();
+      const title_en = document.getElementById("ap_title_en").value.trim();
+      if (!title_ar || !title_en) {
+        Swal.showValidationMessage(currentLang === "ar" ? "يجب إدخال العنوان" : "Title is required");
+        return false;
+      }
+      return {
+        id: type + "_" + Date.now(),
+        title_ar, title_en,
+        price: parseFloat(document.getElementById("ap_price").value) || 0,
+        currency: "ريال",
+        period_ar: document.getElementById("ap_period_ar").value,
+        period_en: document.getElementById("ap_period_en").value,
+        icon: document.getElementById("ap_icon").value || "fa-star",
+        badge: "",
+        features_ar: document.getElementById("ap_features_ar").value.split('\n').filter(s => s.trim()),
+        features_en: document.getElementById("ap_features_en").value.split('\n').filter(s => s.trim())
+      };
+    }
+  });
+  if (result.isConfirmed && result.value) {
+    db[type].push(result.value);
+    saveDB();
+    renderProductTables();
+    renderAll();
+    Swal.fire({ icon: "success", title: currentLang === "ar" ? "تمت الإضافة ✓" : "Added ✓", timer: 1200, showConfirmButton: false });
+  }
+}
+
+async function deleteProduct(type, idx) {
+  const confirm = await Swal.fire({
+    icon: "warning",
+    title: currentLang === "ar" ? "تأكيد الحذف" : "Confirm Delete",
+    text: currentLang === "ar" ? "هل أنت متأكد من حذف هذا المنتج؟ لا يمكن التراجع." : "Are you sure? This cannot be undone.",
+    showCancelButton: true,
+    confirmButtonText: currentLang === "ar" ? "نعم، احذف" : "Yes, delete",
+    cancelButtonText: currentLang === "ar" ? "إلغاء" : "Cancel",
+    confirmButtonColor: "#ef4444"
+  });
+  if (confirm.isConfirmed) {
+    db[type].splice(idx, 1);
+    saveDB();
+    renderProductTables();
+    renderAll();
+    Swal.fire({ icon: "success", title: currentLang === "ar" ? "تم الحذف" : "Deleted", timer: 1200, showConfirmButton: false });
+  }
+}
+
+async function editGift(idx) {
+  const g = db.giftcards[idx];
+  const result = await Swal.fire({
+    title: currentLang === "ar" ? "تعديل القيفت كارد" : "Edit Gift Card",
+    html: `
+      <input id="eg_usd" type="number" step="0.01" class="swal2-input" placeholder="السعر بالدولار" value="${g.price_usd}">
+      <input id="eg_sar" type="number" step="0.01" class="swal2-input" placeholder="السعر بالريال" value="${g.price_sar}">
+    `,
+    showCancelButton: true,
+    confirmButtonText: currentLang === "ar" ? "حفظ" : "Save",
+    cancelButtonText: currentLang === "ar" ? "إلغاء" : "Cancel",
+    preConfirm: () => ({
+      price_usd: parseFloat(document.getElementById("eg_usd").value) || 0,
+      price_sar: parseFloat(document.getElementById("eg_sar").value) || 0
+    })
+  });
+  if (result.isConfirmed && result.value) {
+    Object.assign(db.giftcards[idx], result.value);
+    saveDB();
+    renderGiftTable();
+    renderAll();
+    Swal.fire({ icon: "success", title: currentLang === "ar" ? "تم الحفظ ✓" : "Saved ✓", timer: 1200, showConfirmButton: false });
+  }
+}
+
+async function addGift() {
+  const result = await Swal.fire({
+    title: currentLang === "ar" ? "إضافة قيفت كارد" : "Add Gift Card",
+    html: `
+      <input id="ag_usd" type="number" step="0.01" class="swal2-input" placeholder="السعر بالدولار">
+      <input id="ag_sar" type="number" step="0.01" class="swal2-input" placeholder="السعر بالريال">
+    `,
+    showCancelButton: true,
+    confirmButtonText: currentLang === "ar" ? "إضافة" : "Add",
+    cancelButtonText: currentLang === "ar" ? "إلغاء" : "Cancel",
+    preConfirm: () => ({
+      id: "g_" + Date.now(),
+      price_usd: parseFloat(document.getElementById("ag_usd").value) || 0,
+      price_sar: parseFloat(document.getElementById("ag_sar").value) || 0
+    })
+  });
+  if (result.isConfirmed && result.value) {
+    db.giftcards.push(result.value);
+    saveDB();
+    renderGiftTable();
+    renderAll();
+    Swal.fire({ icon: "success", title: currentLang === "ar" ? "تمت الإضافة ✓" : "Added ✓", timer: 1200, showConfirmButton: false });
+  }
+}
+
+async function deleteGift(idx) {
+  const confirm = await Swal.fire({
+    icon: "warning",
+    title: currentLang === "ar" ? "تأكيد الحذف" : "Confirm Delete",
+    text: currentLang === "ar" ? "هل أنت متأكد؟" : "Are you sure?",
+    showCancelButton: true,
+    confirmButtonColor: "#ef4444",
+    confirmButtonText: currentLang === "ar" ? "نعم، احذف" : "Yes, delete",
+    cancelButtonText: currentLang === "ar" ? "إلغاء" : "Cancel"
+  });
+  if (confirm.isConfirmed) {
+    db.giftcards.splice(idx, 1);
+    saveDB();
+    renderGiftTable();
+    renderAll();
+  }
+}
+
+async function editWhy(idx) {
+  const w = db.whyUs[idx];
+  const result = await Swal.fire({
+    title: currentLang === "ar" ? "تعديل الميزة" : "Edit Feature",
+    html: `
+      <input id="ew_icon" class="swal2-input" placeholder="أيقونة (fa-bolt)" value="${w.icon}">
+      <input id="ew_title_ar" class="swal2-input" placeholder="العنوان (عربي)" value="${(w.title_ar || '').replace(/"/g, '&quot;')}">
+      <input id="ew_title_en" class="swal2-input" placeholder="Title (English)" value="${(w.title_en || '').replace(/"/g, '&quot;')}">
+      <input id="ew_desc_ar" class="swal2-input" placeholder="الوصف (عربي)" value="${(w.desc_ar || '').replace(/"/g, '&quot;')}">
+      <input id="ew_desc_en" class="swal2-input" placeholder="Description (English)" value="${(w.desc_en || '').replace(/"/g, '&quot;')}">
+    `,
+    showCancelButton: true,
+    confirmButtonText: currentLang === "ar" ? "حفظ" : "Save",
+    cancelButtonText: currentLang === "ar" ? "إلغاء" : "Cancel",
+    preConfirm: () => ({
+      icon: document.getElementById("ew_icon").value,
+      title_ar: document.getElementById("ew_title_ar").value,
+      title_en: document.getElementById("ew_title_en").value,
+      desc_ar: document.getElementById("ew_desc_ar").value,
+      desc_en: document.getElementById("ew_desc_en").value
+    })
+  });
+  if (result.isConfirmed && result.value) {
+    Object.assign(db.whyUs[idx], result.value);
+    saveDB();
+    renderWhyEditor();
+    renderAll();
+  }
+}
+
+function saveSettings() {
+  db.settings.discord_link = document.getElementById("setDiscordLink").value.trim() || "https://discord.gg/ahlen";
+  const newUser = document.getElementById("setAdminUser").value.trim();
+  const newPass = document.getElementById("setAdminPass").value;
+  if (newUser) db.admin.username = newUser;
+  if (newPass) db.admin.password = newPass;
+  db.settings.maintenance = document.getElementById("setMaintenance").checked;
+  saveDB();
+  renderAll();
+  document.getElementById("setAdminPass").value = "";
+  Swal.fire({
+    icon: "success",
+    title: currentLang === "ar" ? "تم حفظ الإعدادات ✓" : "Settings saved ✓",
+    timer: 1500,
+    showConfirmButton: false
+  });
+}
+
+async function resetAllData() {
+  const c = await Swal.fire({
+    icon: "warning",
+    title: currentLang === "ar" ? "استعادة الافتراضي؟" : "Reset to default?",
+    text: currentLang === "ar" ? "سيتم حذف كل التعديلات بشكل نهائي" : "All your customizations will be permanently lost",
+    showCancelButton: true,
+    confirmButtonColor: "#ef4444",
+    confirmButtonText: currentLang === "ar" ? "نعم، استعد" : "Yes, reset",
+    cancelButtonText: currentLang === "ar" ? "إلغاء" : "Cancel"
+  });
+  if (c.isConfirmed) {
+    localStorage.removeItem(DB_KEY);
+    db = loadDB();
+    renderAll();
+    buildDashboard();
+    Swal.fire({ icon: "success", title: currentLang === "ar" ? "تم الاستعادة" : "Reset done", timer: 1200, showConfirmButton: false });
+  }
+}
+
+async function resetAnalytics() {
+  const c = await Swal.fire({
+    icon: "warning",
+    title: currentLang === "ar" ? "تأكيد إعادة التعيين" : "Confirm Reset",
+    showCancelButton: true,
+    confirmButtonColor: "#ef4444",
+    confirmButtonText: currentLang === "ar" ? "نعم" : "Yes",
+    cancelButtonText: currentLang === "ar" ? "إلغاء" : "Cancel"
+  });
+  if (c.isConfirmed) {
+    db.analytics = { visits: 0, discord_clicks: 0, package_views: 0, weekly: [0,0,0,0,0,0,0] };
+    saveDB();
+    buildDashboard();
+    document.querySelector('.dash-nav-item[data-tab="analytics"]').click();
+  }
+}
+
+let dashChartInstance = null;
+function renderDashChart() {
+  const ctx = document.getElementById("dashChart");
+  if (!ctx || typeof Chart === "undefined") return;
+  if (dashChartInstance) dashChartInstance.destroy();
+  const daysAr = ["السبت","الأحد","الإثنين","الثلاثاء","الأربعاء","الخميس","الجمعة"];
+  const daysEn = ["Sat","Sun","Mon","Tue","Wed","Thu","Fri"];
+  const labels = currentLang === "ar" ? daysAr : daysEn;
+  const weekly = db.analytics.weekly || [0,0,0,0,0,0,0];
+  const data = [weekly[6], weekly[0], weekly[1], weekly[2], weekly[3], weekly[4], weekly[5]];
+  dashChartInstance = new Chart(ctx, {
+    type: "line",
+    data: {
+      labels,
+      datasets: [{
+        label: t("visits"),
+        data,
+        borderColor: "#5ce1ff",
+        backgroundColor: "rgba(92,225,255,0.2)",
+        tension: 0.4,
+        fill: true,
+        pointBackgroundColor: "#5ce1ff",
+        pointRadius: 5,
+        pointHoverRadius: 7
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: { legend: { labels: { color: "#fff", font: { family: "Cairo, Inter" } } } },
+      scales: {
+        y: { ticks: { color: "#A8B2D1" }, grid: { color: "rgba(92,225,255,0.1)" }, beginAtZero: true },
+        x: { ticks: { color: "#A8B2D1" }, grid: { color: "rgba(92,225,255,0.05)" } }
+      }
+    }
+  });
+}
+
+let analyticsChartInstance = null;
+function renderAnalyticsChart() {
+  const ctx = document.getElementById("analyticsChart");
+  if (!ctx || typeof Chart === "undefined") return;
+  if (analyticsChartInstance) analyticsChartInstance.destroy();
+  analyticsChartInstance = new Chart(ctx, {
+    type: "doughnut",
+    data: {
+      labels: [t("visits"), t("discord_clicks"), t("pkg_views")],
+      datasets: [{
+        data: [db.analytics.visits || 0, db.analytics.discord_clicks || 0, db.analytics.package_views || 0],
+        backgroundColor: ["#5ce1ff", "#5865F2", "#a855f7"],
+        borderColor: "#0a0e27",
+        borderWidth: 3
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: { legend: { position: "bottom", labels: { color: "#fff", padding: 16, font: { family: "Cairo, Inter" } } } }
+    }
+  });
+}
+
+function openDashboard() {
+  document.body.classList.add("no-scroll");
+  buildDashboard();
+  document.getElementById("dashboard").classList.add("open");
+}
+
+function closeDashboard() {
+  document.body.classList.remove("no-scroll");
+  document.getElementById("dashboard").classList.remove("open");
+}
+
+function logout() {
+  localStorage.removeItem("ahleen_session");
+  sessionStorage.removeItem("ahleen_session");
+  closeDashboard();
+  Swal.fire({
+    icon: "info",
+    title: currentLang === "ar" ? "تم تسجيل الخروج" : "Logged out",
+    timer: 1400,
+    showConfirmButton: false
+  });
+}
+
+window.editProduct = editProduct;
+window.addProduct = addProduct;
+window.deleteProduct = deleteProduct;
+window.editGift = editGift;
+window.addGift = addGift;
+window.deleteGift = deleteGift;
+window.editWhy = editWhy;
+window.resetAllData = resetAllData;
+window.resetAnalytics = resetAnalytics;
+window.trackEvent = trackEvent;
+
+/* ============================================
+   PARTICLES BACKGROUND
+============================================ */
+(function initParticles() {
+  const canvas = document.getElementById("particles-canvas");
+  if (!canvas) return;
+  const ctx = canvas.getContext("2d");
+  let particles = [];
+  let w, h;
+
+  function resize() {
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+  }
+
+  function createParticles() {
+    const count = Math.min(80, Math.floor((w * h) / 22000));
+    particles = [];
+    for (let i = 0; i < count; i++) {
+      particles.push({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.35,
+        vy: (Math.random() - 0.5) * 0.35,
+        size: Math.random() * 1.8 + 0.5,
+        alpha: Math.random() * 0.5 + 0.25
+      });
+    }
+  }
+
+  resize();
+  createParticles();
+  window.addEventListener("resize", () => { resize(); createParticles(); });
+
+  function draw() {
+    ctx.clearRect(0, 0, w, h);
+    for (const p of particles) {
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0 || p.x > w) p.vx *= -1;
+      if (p.y < 0 || p.y > h) p.vy *= -1;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(92,225,255,${p.alpha})`;
+      ctx.fill();
+    }
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        if (dist < 130) {
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(92,225,255,${0.12 * (1 - dist / 130)})`;
+          ctx.lineWidth = 0.6;
+          ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* ============================================
+   EASTER EGG (5 clicks on logo)
+============================================ */
+let logoClicks = 0;
+let logoTimer = null;
+document.getElementById("logo").addEventListener("click", () => {
+  logoClicks++;
+  clearTimeout(logoTimer);
+  logoTimer = setTimeout(() => { logoClicks = 0; }, 2000);
+  if (logoClicks >= 5) {
+    logoClicks = 0;
+    Swal.fire({
+      title: currentLang === "ar" ? "🌟 وجدت السر!" : "🌟 You found it!",
+      html: currentLang === "ar"
+        ? "<p style='font-size:18px;line-height:1.7;'>أهلاً وسهلاً بك يا بطل! 🎉<br>أنت من النوع المميز 💎<br><br><strong style='color:var(--accent);'>كن دائماً سبباً في إسعاد من حولك ✨</strong></p>"
+        : "<p style='font-size:18px;line-height:1.7;'>Welcome champion! 🎉<br>You're truly special 💎<br><br><strong style='color:var(--accent);'>Always be a reason for someone's smile ✨</strong></p>",
+      confirmButtonText: currentLang === "ar" ? "شكراً!" : "Thanks!"
+    });
+  }
+});
+
+/* ============================================
+   INIT
+============================================ */
+window.addEventListener("load", () => {
+  applyLang();
+  trackEvent("visits");
+  setTimeout(() => {
+    document.getElementById("loadingScreen").classList.add("hidden");
+    if (typeof AOS !== "undefined") {
+      AOS.init({ duration: 800, once: true, offset: 50, easing: "ease-out-cubic" });
+    }
+  }, 900);
+
+  if (localStorage.getItem("ahleen_session") === "1" || sessionStorage.getItem("ahleen_session") === "1") {
+    setTimeout(() => openDashboard(), 1200);
+  }
+});
+
+/* Keep ESC to close modals/menu */
+window.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    if (loginModal.classList.contains("open")) loginModal.classList.remove("open");
+    else if (sideMenu.classList.contains("open")) closeMenu();
+  }
+});
+</script>
+</body>
+</html>
